@@ -5,7 +5,6 @@ extends Node2D
 
 
 func _on_shoot_timer_timeout():
-	var shot: RigidBody2D = shot_scene.instantiate() as RigidBody2D
-	shot.linear_velocity = shot_velocity
+	var shot: Node2D = shot_scene.instantiate()
 	shot.position = $ShotOrigin.global_position
 	add_sibling(shot)

@@ -6,9 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mophp"]
 radius = 7.0
 
-[node name="Shot" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Shot" type="Area2D"]
 script = ExtResource("1_1iy1k")
+speed = 1250
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o5bdc")
@@ -16,8 +16,4 @@ texture = ExtResource("1_o5bdc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mophp")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-1.19209e-07, 1.19209e-07)
-scale = Vector2(0.7, 0.7)
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
