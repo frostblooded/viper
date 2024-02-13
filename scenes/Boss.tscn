@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://crlkrgxiw7mf6"]
+
+[ext_resource type="Texture2D" uid="uid://d17swidj7dwn8" path="res://assets/boss.png" id="1_2a3jw"]
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_yf40y"]
+[ext_resource type="PackedScene" uid="uid://vstunmcrey84" path="res://scenes/Shot.tscn" id="2_8pret"]
+
+[node name="Boss" type="Node2D"]
+script = ExtResource("1_yf40y")
+shot_scene = ExtResource("2_8pret")
+shot_velocity = Vector2(-2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2a3jw")
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ShotOrigin" type="Node2D" parent="."]
+position = Vector2(-64, 0)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
